@@ -42,6 +42,6 @@
     "gulp": "^3.9.0",
     "gulp-jasmine": "^2.0.1",
     "jasmine-reporters": "^2.0.7",
-    "mocha": "*"
+    "jsonfile": "^2.2.1"
   }
 }

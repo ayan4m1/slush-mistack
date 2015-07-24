@@ -6,14 +6,20 @@ yosay = require('yosay')
 module.exports = require('yeoman-generator').generators.Base.extend(
   prompting: ->
     done = @async()
-    @log yosay('Welcome to the ' + chalk.red('Mistack') + ' generator!')
+    @log yosay('Get ready to make a huge ' + chalk.red('Mistack') + '!')
 
-    prompts = [
-      type: 'confirm'
-      name: 'someOption'
-      message: 'Would you like to enable this option?'
-      default: true
+    metadata = [
+      'name'
+      'desc'
+      'repo'
+      'author'
+      'version'
+      'license'
     ]
+    prompts = metadata.map (name) ->
+      type: 'input'
+      name: name
+      message: "package #{name}"
 
     @prompt prompts, ((props) ->
       @props = props
@@ -22,8 +28,17 @@ module.exports = require('yeoman-generator').generators.Base.extend(
 
   writing:
     app: ->
-      @fs.copy @templatePath('_package.json'), @destinationPath('package.json')
-      @fs.copy @templatePath('_bower.json'), @destinationPath('bower.json')
+      packageInfo =
+        name: @props['name']
+        desc: @props['desc'] ? ''
+        repo: @props['repo'] ? null
+        author: @props['author'] ? 'Unknown'
+        version: @props['version'] ? '0.0.1'
+        license: @props['license'] ? 'MIT'
+
+      @fs.copyTpl @templatePath('_package.json'), @destinationPath('package.json'), packageInfo
+      @fs.copyTpl @templatePath('_bower.json'), @destinationPath('bower.json'), packageInfo
+
     projectfiles: ->
       @fs.copy @templatePath('editorconfig'), @destinationPath('.editorconfig')
       @fs.copy @templatePath('jshintrc'), @destinationPath('.jshintrc')
