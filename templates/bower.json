@@ -1,9 +1,6 @@
 {
   "name": "<%= nameDashed %>",
-  "main": [
-    "/build/<%= nameDashed %>.min.js",
-    "/build/<%= nameDashed %>.min.css"
-  ],
+  "main": "build/",
   "version": "0.1.0",
   "description": "TODO",
   "authors": [ "TODO" ],

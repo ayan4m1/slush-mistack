@@ -78,9 +78,16 @@ gulp.task('default', (done) => {
 		if (!answers.moveon) {
 			return done();
 		}
+
+		// fill in some computed answers
 		answers.appNameSlug = _.slugify(answers.appName);
+		answers.nameDashed = _.classify(answers.appName);
+		answers.currentYear = new Date().getFullYear();
+
 		gulp.src(__dirname + '/templates/**')
-			.pipe(template(answers))
+			.pipe(template(answers, {
+				interpolate: /<%=([\s\S]+?)%>/g
+			}))
 			.pipe(rename(function (file) {
 				if (file.basename[0] === '_') {
 					file.basename = '.' + file.basename.slice(1);

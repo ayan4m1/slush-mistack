@@ -4,7 +4,14 @@
 
 'use strict';
 
-var del = require('del');
+var gulp = require('gulp'),
+		util = require('gulp-util'),
+		uglify = require('gulp-uglify'),
+		concat = require('gulp-concat'),
+		csslint = require('gulp-csslint'),
+		ngAnnotate = require('gulp-ng-annotate'),
+		jshint = require('gulp-jshint'),
+		del = require('del');
 
 var paths = {
 	build: () => 'build',
@@ -13,7 +20,7 @@ var paths = {
 		if (!exts) { exts = []; }
 		var result = [];
 
-		for (var ext of exts) {
+		for (const ext of exts) {
 			result.push(`src/${ext}`);
 		}
 
@@ -27,25 +34,26 @@ var paths = {
 
 var defaultHandlers = {
 	js: (src) => src.pipe(uglify()),
-	coffee: (src) => src.pipe(coffee()).pipe(uglify()),
 	html: (src) => src,
 	scss: (src) => src.pipe(sass()).pipe(cssmin())
 };
 
 gulp.task('default', ['clean', 'build', 'test'], () => {
-
+	console.log('done with clean/build/test');
 });
 
-gulp.task('clean', [], () => {
-	del(paths.build);
+gulp.task('clean', [], (done) => {
+	del(paths.build, done);
 });
 
 gulp.task('build', [], () => {
+	var tasks = [];
 	fs.mkdirSync(paths.build);
-	for (var ext of ['js', 'html', 'scss']) {
+	for (const ext of ['js', 'html', 'scss']) {
 		var src = paths.src(ext);
-		defaultHandlers[ext](gulp.src(src)).pipe(gulp.dest);
+		tasks.push(defaultHandlers[ext](gulp.src(src)).pipe(gulp.dest(paths.dest)));
 	}
+	return tasks;
 });
 
 gulp.task('develop', ['clean', 'build'], () => {
