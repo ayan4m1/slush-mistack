@@ -102,7 +102,7 @@ gulp.task('default', (done) => {
 			.pipe(conflict('./'))
 			.pipe(gulp.dest('./'))
 			.pipe(install())
-			.on('end', function () {
+			.on('end', () => {
 				console.log('Congrats, you\'ve made a big MISTACK!');
 				done();
 			});
