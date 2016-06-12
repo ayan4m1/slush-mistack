@@ -1,9 +1,9 @@
 {
-  "name": "<%= nameDashed %>",
+  "name": "<%= appNameDashes %>",
   "main": "build/",
-  "version": "0.1.0",
-  "description": "TODO",
-  "authors": [ "TODO" ],
+  "version": "<%= appVersion %>",
+  "description": "<%= appDescription %>",
+  "authors": [ "<%= authorName %> (<%= authorEmail =>)" ],
   "ignore": [
     "**/.*",
     "package.json",

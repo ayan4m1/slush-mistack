@@ -1,6 +1,6 @@
 /**
-  * Mistack build script
-  */
+ * <%= appName %>
+ **/
 
 'use strict';
 

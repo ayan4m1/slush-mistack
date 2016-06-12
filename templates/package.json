@@ -1,7 +1,11 @@
 {
-  "name": "<%= nameDashed %>",
-  "author": "TODO",
-  "version": "0.1.0",
+  "name": "<%= appNameDashes %>",
+  "author": "<%= authorName %> (<%= authorEmail %>)",
+  "version": "<%= appVersion %>",
+  "repository": {
+    "type": "git",
+    "url": "<%= repository %>"
+  },
   "scripts": {
     "start": "gulp watch",
     "test": "gulp test"
