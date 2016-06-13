@@ -1,0 +1,16 @@
+@import 'lib/fontawesome/scss/font-awesome';
+
+// import order may need to be adjusted for some themes
+@import 'lib/bootswatch/<%= bootswatchTheme =>/variables';
+@import 'lib/bootstrap-sass/assets/stylesheets/bootstrap';
+@import 'lib/bootswatch/<%= bootswatchTheme =>/bootswatch';
+
+// bootstrap buttons + fontawesome icons fixes
+.btn .fa {
+  vertical-align: middle;
+}
+
+// fix for angular + bootstrap navbar
+body > .ng-scope {
+  margin-top: $navbar-height * 1.75;
+}
