@@ -4,66 +4,91 @@
 
 'use strict';
 
-var gulp = require('gulp'),
-		util = require('gulp-util'),
-		uglify = require('gulp-uglify'),
-		concat = require('gulp-concat'),
-		csslint = require('gulp-csslint'),
-		ngAnnotate = require('gulp-ng-annotate'),
-		jshint = require('gulp-jshint'),
-		del = require('del');
+const config = require('konfig')(),
+  fs = require('fs'),
+  del = require('del'),
+  gulp = require('gulp'),
+  karma = require('karma'),
+  util = require('gulp-util'),
+  gulpif = require('gulp-if'),
+	sass = require('gulp-sass'),
+  jslint = require('gulp-jslint'),
+  uglify = require('gulp-uglify'),
+  concat = require('gulp-concat'),
+  csslint = require('gulp-csslint'),
+  istanbul = require('gulp-istanbul'),
+  ngAnnotate = require('gulp-ng-annotate'),
+	ngTplCompiler = require('gulp-ng-html2js');
+
+const KarmaServer = karma.Server;
 
 var paths = {
-	build: () => 'build',
-	bower: () => 'lib',
-	src: (exts) => {
-		if (!exts) { exts = []; }
-		var result = [];
+  build: 'build',
+  bower: 'lib',
+  src: (exts) => {
+    if (!exts) { exts = []; }
+    var result = [];
 
-		for (const ext of exts) {
-			result.push(`src/${ext}`);
-		}
+    for (const ext of exts) {
+      result.push(`src/${ext}`);
+    }
 
-		if (exts.length == 0) {
-			result.push('src/');
-		}
+    if (exts.length == 0) {
+      result.push('src/');
+    }
 
-		return result;
-	}
+    return result;
+  }
 };
 
 var defaultHandlers = {
-	js: (src) => src.pipe(uglify()),
-	html: (src) => src,
-	scss: (src) => src.pipe(sass()).pipe(cssmin())
+  js: (src) => src.pipe(gulpif(config.build.minify, uglify())),
+  html: (src) => src,
+  scss: (src) => src.pipe(sass()).pipe(csslint()),
+  css: (src) => src.pipe(concat('library.css'))
 };
 
 gulp.task('default', ['clean', 'build', 'test'], () => {
-	console.log('done with clean/build/test');
+  console.log('done with clean/build/test');
 });
 
 gulp.task('clean', [], (done) => {
-	del(paths.build, done);
+  del(paths.build, done);
+});
+
+gulp.task('develop', ['clean', 'build'], () => {
+  gulp.watch([], 'build');
+});
+
+gulp.task('test', ['clean', 'build'], (done) => {
+  new KarmaServer({
+    configFile: __dirname + '/test/karma.conf.js',
+    singleRun: true
+  }, done).start();
 });
 
 gulp.task('build', [], () => {
 	var tasks = [];
-	fs.mkdirSync(paths.build);
-	for (const ext of ['js', 'html', 'scss']) {
-		var src = paths.src(ext);
-		tasks.push(defaultHandlers[ext](gulp.src(src)).pipe(gulp.dest(paths.dest)));
+
+	if (!fs.existsSync(paths.build)) {
+		fs.mkdirSync(paths.build);
 	}
+
+	for (const ext of ['js', 'html', 'scss']) {
+		const src = paths.src(ext),
+			handler = defaultHandlers[ext];
+
+		if (handler == null) {
+			continue;
+		}
+
+		console.log("running " + ext + " handler");
+		tasks.push(
+			handler(gulp.src(src)).pipe(
+				gulp.dest(paths.build)
+			)
+		);
+	}
+
 	return tasks;
-});
-
-gulp.task('develop', ['clean', 'build'], () => {
-	gulp.watch([], 'build');
-});
-
-gulp.task('test', [], () => {
-	// todo: this
-});
-
-gulp.task('package', ['clean', 'build'], () => {
-
 });

@@ -1,0 +1,7 @@
+default:
+  deflate: false
+  port: 8080
+
+production:
+  deflate: true
+  port: 80

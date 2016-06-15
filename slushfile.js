@@ -8,14 +8,14 @@
 
 'use strict';
 
-var gulp = require('gulp'),
-	install = require('gulp-install'),
-	conflict = require('gulp-conflict'),
-	template = require('gulp-template'),
+const path = require('path'),
+	gulp = require('gulp'),
+	inquirer = require('inquirer'),
 	rename = require('gulp-rename'),
 	_ = require('underscore.string'),
-	inquirer = require('inquirer'),
-	path = require('path');
+	install = require('gulp-install'),
+	conflict = require('gulp-conflict'),
+	template = require('gulp-template');
 
 var defaults = (() => {
 	var workingDirName = path.basename(process.cwd()),

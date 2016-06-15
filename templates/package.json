@@ -10,22 +10,29 @@
     "start": "gulp watch",
     "test": "gulp test"
   },
-  "dependencies": { },
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "mongoose": "^4.4.20",
+    "express": "^4.13.4",
+    "konfig": "^0.2.1",
+    "yamolo": "^0.1.0",
+    "cors": "^2.7.1"
+  },
   "devDependencies": {
     "del": "^2.2.0",
     "gulp": "^3.7.0",
+    "filewalker": "^0.1.2",
     "gulp-util": "^2.2.14",
-    "gulp-jslint": "^1.0.1",
-    "gulp-rename": "^1.2.0",
-    "gulp-angular-filesort": "^1.0.3",
     "gulp-concat": "^2.2.0",
-    "gulp-clean-css": "~2.0.10",
-    "gulp-csslint": "~0.1.4",
+    "gulp-jslint": "^1.0.1",
     "gulp-uglify": "~0.3.0",
-    "gulp-ng-html2js": "~0.1.7",
+    "gulp-csslint": "~0.1.4",
+    "gulp-istanbul": "1.0.0",
     "gulp-ng-annotate": "~0.2.0",
-    "gulp-karma": "~0.0.4",
-    "karma-phantomjs-launcher": "~0.1.4",
-    "karma": "~0.12.16"
+    "karma": "~0.12.16",
+    "karma-ie-launcher": "~1.0.0",
+    "karma-chrome-launcher": "~1.0.0",
+    "karma-firefox-launcher": "~1.0.0",
+    "karma-phantomjs-launcher": "~0.1.4"
   }
 }
