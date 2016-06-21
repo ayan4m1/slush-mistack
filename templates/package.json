@@ -12,27 +12,33 @@
   },
   "dependencies": {
     "body-parser": "^1.15.1",
-    "mongoose": "^4.4.20",
+    "cors": "^2.7.1",
     "express": "^4.13.4",
+    "express-mongoose": "^0.1.0",
+    "express-validator": "^2.20.7",
     "konfig": "^0.2.1",
-    "yamolo": "^0.1.0",
-    "cors": "^2.7.1"
+    "mongoose": "^4.4.20",
+    "p-promise": "^0.5.0",
+    "passport": "^0.3.2",
+    "yamolo": "^0.1.0"
   },
   "devDependencies": {
     "del": "^2.2.0",
-    "gulp": "^3.7.0",
     "filewalker": "^0.1.2",
-    "gulp-util": "^2.2.14",
+    "gulp": "^3.7.0",
     "gulp-concat": "^2.2.0",
-    "gulp-jslint": "^1.0.1",
-    "gulp-uglify": "~0.3.0",
     "gulp-csslint": "~0.1.4",
     "gulp-istanbul": "1.0.0",
+    "gulp-jasmine": "^2.4.0",
+    "gulp-jslint": "^1.0.1",
     "gulp-ng-annotate": "~0.2.0",
+    "gulp-uglify": "~0.3.0",
+    "gulp-util": "^2.2.14",
     "karma": "~0.12.16",
-    "karma-ie-launcher": "~1.0.0",
     "karma-chrome-launcher": "~1.0.0",
     "karma-firefox-launcher": "~1.0.0",
+    "karma-ie-launcher": "~1.0.0",
+    "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "~0.1.4"
   }
 }
