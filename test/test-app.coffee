@@ -16,8 +16,9 @@ describe 'the app generator', ->
     author: 'Ham Salad <ham@salad.net>'
     license: 'BSD'
 
-  beforeAll (done) ->
+  before (done) ->
     yo.run(path.join(__dirname, '../generators/app'))
+      .inTmpDir()
       .withPrompts packageInfo
     .on 'end', done
 
@@ -31,11 +32,15 @@ describe 'the app generator', ->
       ]
 
     it 'interpolate package metadata', ->
-      info = jsonfile.readFileSync('package.json')
-      # todo: probably a cleaner way
+      info = jsonfile.readFileSync 'package.json'
+
+      # make assertions about package fields
       expect(info.name).toBe(packageInfo.name)
       expect(info.version).toBe(packageInfo.version)
       expect(info.repo).toBeUndefined()
       expect(info.description).toBe(packageInfo.desc)
       expect(info.author).toBe(packageInfo.author)
       expect(info.license).toBe(packageInfo.license)
+
+    it 'copy static web resources', ->
+      assert.fileContent 'src/coffee/', /ham/

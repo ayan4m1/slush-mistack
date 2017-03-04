@@ -3,7 +3,7 @@
   "version": "<%= version %>",
   "description": "<%= desc %>",
   "repository": "<%= repo %>",
-  "main": "index.js",
+  "main": "bin/start-api.coffee",
   "scripts": {
     "test": "gulp test"
   },
