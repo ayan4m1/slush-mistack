@@ -1,0 +1,9 @@
+default:
+  minify: false
+  test: false
+
+test:
+  test: true
+
+production:
+  minify: true
