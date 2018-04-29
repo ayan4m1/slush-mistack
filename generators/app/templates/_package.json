@@ -11,6 +11,7 @@
   "license": "<%= license %>",
   "dependencies": {
     "extend": "^2.0.1",
+    "fontawesome": "^5.0.10",
     "glob": "^5.0.10",
     "gulp": "^3.9.0",
     "gulp-coffee": "^2.3.1",
