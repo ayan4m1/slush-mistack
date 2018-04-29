@@ -2,7 +2,7 @@
  * slush-generator-mistack
  * https://github.com/ayan4m1/slush-generator-mistack
  *
- * Copyright (c) 2016, ayan4m1
+ * Copyright (c) 2016-2018, ayan4m1
  * Licensed under the MIT license.
  */
 
