@@ -1,51 +1,44 @@
 {
-  "name": "slush-generator-mistack",
-  "description": "opinionated generator for web applications",
-  "version": "0.1.0",
-  "homepage": "https://github.com/ayan4m1/slush-generator-mistack",
-  "author": {
-    "name": "ayan4m1",
-    "email": "andrew@bulletlogic.com"
-  },
+  "name": "testapp",
+  "author": "ayan4m1 (andrew@bulletlogic.com)",
+  "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "git://github.com/ayan4m1/slush-generator-mistack.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ayan4m1/slush-generator-mistack/issues"
-  },
-  "license": "MIT",
-  "main": "slushfile.js",
-  "engines": {
-    "node": ">=9.11.1",
-    "npm": ">=5.8.0"
+    "url": ""
   },
   "scripts": {
+    "start": "gulp watch",
     "test": "gulp test"
   },
   "dependencies": {
-    "slush": "^1.1.1",
-    "gulp-template": "^0.1.1",
-    "gulp-install": "^0.1.4",
-    "gulp-conflict": "^0.1.1",
-    "gulp-rename": "^1.2.0",
-    "underscore.string": "^2.3.3",
-    "inquirer": "^0.8.0",
-    "iniparser": "^1.0.5",
-    "chalk": "^1.1.1",
-    "coffeescript": "^2.2.4",
-    "gulp": "^3.9.1",
-    "gulp-jasmine": "^2.3.0",
-    "jasmine-reporters": "^2.1.1",
-    "jsonfile": "^2.2.3",
-    "yeoman-generator": "^0.19.0",
-    "yosay": "^1.1.0"
+    "body-parser": "^1.15.1",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "express-mongoose": "^0.1.0",
+    "express-validator": "^2.20.7",
+    "konfig": "^0.2.1",
+    "mongoose": "^4.4.20",
+    "p-promise": "^0.5.0",
+    "passport": "^0.3.2",
+    "yamolo": "^0.1.0"
   },
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-coffeelint": "^0.5.0",
-    "gulp-jasmine": "^2.0.1",
-    "jasmine-reporters": "^2.0.7",
-    "jsonfile": "^2.2.1"
+    "del": "^2.2.0",
+    "filewalker": "^0.1.2",
+    "gulp": "^3.7.0",
+    "gulp-concat": "^2.2.0",
+    "gulp-csslint": "~0.1.4",
+    "gulp-istanbul": "1.0.0",
+    "gulp-jasmine": "^2.4.0",
+    "gulp-jslint": "^1.0.1",
+    "gulp-ng-annotate": "~0.2.0",
+    "gulp-uglify": "~0.3.0",
+    "gulp-util": "^2.2.14",
+    "karma": "~0.12.16",
+    "karma-chrome-launcher": "~1.0.0",
+    "karma-firefox-launcher": "~1.0.0",
+    "karma-ie-launcher": "~1.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "~0.1.4"
   }
 }
