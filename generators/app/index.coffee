@@ -37,7 +37,6 @@ module.exports = require('yeoman-generator').generators.Base.extend(
         license: @props['license'] ? 'MIT'
 
       @fs.copyTpl @templatePath('_package.json'), @destinationPath('package.json'), packageInfo
-      @fs.copyTpl @templatePath('_bower.json'), @destinationPath('bower.json'), packageInfo
 
     projectfiles: ->
       @fs.copy @templatePath('editorconfig'), @destinationPath('.editorconfig')
