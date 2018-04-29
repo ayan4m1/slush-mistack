@@ -25,7 +25,6 @@ describe 'the app generator', ->
   describe 'is executed, then it should', ->
     it 'create files', ->
       assert.file [
-        'bower.json'
         'package.json'
         '.editorconfig'
         '.jshintrc'
