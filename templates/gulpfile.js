@@ -16,29 +16,12 @@ const config = require('konfig')(),
   uglify = require('gulp-uglify'),
   concat = require('gulp-concat'),
   csslint = require('gulp-csslint'),
-  istanbul = require('gulp-istanbul'),
-  ngAnnotate = require('gulp-ng-annotate'),
-	ngTplCompiler = require('gulp-ng-html2js');
+  istanbul = require('gulp-istanbul');
 
 const KarmaServer = karma.Server;
 
 var paths = {
-  build: 'build',
-  bower: 'lib',
-  src: (exts) => {
-    if (!exts) { exts = []; }
-    var result = [];
-
-    for (const ext of exts) {
-      result.push(`src/${ext}`);
-    }
-
-    if (exts.length == 0) {
-      result.push('src/');
-    }
-
-    return result;
-  }
+  build: 'build'
 };
 
 var defaultHandlers = {

@@ -1,10 +1,10 @@
 {
-  "name": "testapp",
-  "author": "ayan4m1 (andrew@bulletlogic.com)",
-  "version": "0.0.1",
+  "name": "slush-mistack",
+  "author": "ayan4m1 <andrew@bulletlogic.com>",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:ayan4m1/slush-mistack.git"
   },
   "scripts": {
     "start": "gulp watch",
@@ -30,8 +30,7 @@
     "gulp-csslint": "~0.1.4",
     "gulp-istanbul": "1.0.0",
     "gulp-jasmine": "^2.4.0",
-    "gulp-jslint": "^1.0.1",
-    "gulp-ng-annotate": "~0.2.0",
+    "gulp-jslint": "^1.0.10",
     "gulp-uglify": "~0.3.0",
     "gulp-util": "^2.2.14",
     "karma": "~0.12.16",
